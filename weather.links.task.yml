@@ -1,0 +1,5 @@
+entity.city.collection:
+  title: 'Cities'
+  route_name: entity.city.collection
+  base_route: system.admin_content
+  weight: 10

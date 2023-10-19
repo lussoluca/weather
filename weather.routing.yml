@@ -1,0 +1,31 @@
+weather.settings:
+  path: '/admin/config/system/weather'
+  defaults:
+    _title: 'Weather Settings'
+    _form: 'Drupal\weather\Form\SettingsForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+weather.forecast:
+  path: '/forecast/{city}'
+  defaults:
+    _controller: '\Drupal\weather\Controller\ForecastController::page'
+    _title_callback: '\Drupal\weather\Controller\ForecastController::title'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      city:
+        type: 'weather:city'
+
+weather.details:
+  path: '/weather/{city}/{date}'
+  defaults:
+    _title: 'Weather'
+    _controller: '\Drupal\weather\Controller\ForecastController::details'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      city:
+        type: 'weather:city'

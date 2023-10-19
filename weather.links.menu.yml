@@ -1,0 +1,12 @@
+weather.settings:
+  title: Weather Settings
+  description: 'Configure weather settings.'
+  parent: system.admin_config_system
+  route_name: weather.settings
+  weight: 10
+
+entity.city.collection:
+  title: 'Cities'
+  description: 'List of cities.'
+  route_name: entity.city.collection
+  parent: system.admin_content

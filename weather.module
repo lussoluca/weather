@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * Implements hook_help().
+ */
+function weather_help($route_name) {
+  switch ($route_name) {
+    case 'help.page.weather':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Weather module provides weather information.') . '</p>';
+
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function weather_theme(): array {
+  return [
+    'weather_forecast' => [
+      'variables' => [
+        'forecast' => [],
+        'units' => 'metric',
+        'description' => '',
+        'coordinates' => [],
+      ],
+    ],
+    'weather_details' => [
+      'variables' => [
+        'forecast' => [],
+        'units' => 'metric',
+      ],
+    ],
+    'weather_forecast_single' => [
+      'variables' => [
+        'forecast' => [],
+        'city' => NULL,
+        'units' => 'metric',
+      ],
+    ],
+  ];
+}

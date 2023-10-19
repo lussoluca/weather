@@ -1,0 +1,22 @@
+.forecast-list {
+  margin-bottom: 50px
+}
+
+.city-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px
+}
+
+.city-description {
+  width: 50%;
+}
+
+.city-map {
+  width: 50%;
+  margin-left: 50px;
+}
+
+#map {
+  height: 300px;
+}

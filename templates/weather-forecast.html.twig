@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a wather forecast.
+ *
+ * Available variables:
+ * - forecast: An array of array with forecast data.
+ * - units: The system used to render values. Can be metric or imperial.
+ *
+ * @see template_preprocess_weather_forecast()
+ */
+#}
+
+{{ attach_library('weather/map') }}
+{{ attach_library('weather/base') }}
+
+<div class="forecast-list">
+  {% for item in forecast.list %}
+    <div class="forecast-element">
+      <h3 class="forecast-element__date">{{ item.dt_txt|date("d/m/Y H:i") }}</h3>
+      <p class="forecast-element__temp">{{ item.main.temp }} °{{ units == 'metric' ? 'C' : 'F' }}</p>
+      <p class="forecast-element__description">{{ item.weather[0].description|title }}</p>
+      <a href="{{ path('weather.details', {city:forecast.city.name, date:item.dt_txt}) }}" class="use-ajax"
+         data-dialog-type="dialog"
+         data-dialog-options='{"width":700,"title":"{{ 'Details'|t }}"}'>More info</a>
+    </div>
+  {% endfor %}
+</div>
+<div class="city-wrapper">
+  <div class="city-description">
+    {{ description }}
+  </div>
+  <div class="city-map">
+    <div id="map" data-lat="{{ coordinates.0 }}" data-lng="{{ coordinates.1 }}"></div>
+  </div>
+</div>

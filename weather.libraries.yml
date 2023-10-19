@@ -1,0 +1,31 @@
+leaflet:
+  version: 1.9.4
+  css:
+    component:
+      https://unpkg.com/leaflet@1.9.4/dist/leaflet.css: { minified: true }
+  js:
+    https://unpkg.com/leaflet@1.9.4/dist/leaflet.js: { minified: true }
+map:
+  version: VERSION
+  css:
+    component:
+      css/map.css: { }
+  js:
+    js/map.js: { }
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+    - weather/leaflet
+base:
+  version: 1.0.0
+  css:
+    component:
+      css/base.css: { }
+  js:
+    js/base.js: { }
+  dependencies:
+    - core/drupal
+    - core/drupal.ajax
+    - core/jquery
+    - core/once

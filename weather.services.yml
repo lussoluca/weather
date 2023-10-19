@@ -1,0 +1,24 @@
+services:
+  logger.channel.weather:
+    class: Drupal\Core\Logger\LoggerChannel
+    factory: logger.factory:get
+    arguments: [ 'weather' ]
+
+  weather.weather_client:
+    class: 'Drupal\weather\WeatherClient'
+    arguments:
+      - '@http_client'
+      - '@logger.channel.weather'
+      - '@config.factory'
+
+  weather.twig:
+    class: Drupal\weather\Twig\Extension\WeatherExtension
+    arguments: ['@weather.weather_client', '@config.factory']
+    tags:
+      - { name: twig.extension }
+
+  weather.city_converter:
+    class: Drupal\weather\Routing\CityConverter
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: paramconverter }
